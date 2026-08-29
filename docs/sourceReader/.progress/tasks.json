@@ -1,0 +1,100 @@
+{
+  "tasks": [
+    {
+      "file": "00-阅读指南与文档地图.md",
+      "layer": 0,
+      "status": "completed",
+      "description": "项目分析范围、文档结构、阅读顺序和源码覆盖矩阵"
+    },
+    {
+      "file": "01-简单框架-系统骨架.md",
+      "layer": 1,
+      "status": "completed",
+      "description": "进程架构、模块边界、依赖关系、数据流概览"
+    },
+    {
+      "file": "02-简单例子-全路径走读.md",
+      "layer": 2,
+      "status": "completed",
+      "description": "用户请求到响应的完整调用链（CLI 模式）"
+    },
+    {
+      "file": "03-详细逐步说明-主链路拆解.md",
+      "layer": 3,
+      "status": "completed",
+      "description": "代理循环、工具调用、响应处理的源码级拆解"
+    },
+    {
+      "file": "04-核心模块与类型关系.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "AIAgent 类、模型适配器、工具系统、状态管理"
+    },
+    {
+      "file": "05-消息网关与平台适配.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "Gateway 架构、平台适配器、会话管理"
+    },
+    {
+      "file": "06-工具系统与工具集.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "工具注册、调用分发、权限控制、环境隔离"
+    },
+    {
+      "file": "07-配置体系与环境变量.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "配置加载、环境变量、配置层级、多实例支持"
+    },
+    {
+      "file": "08-数据模型与会话存储.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "SessionDB、会话序列化、FTS5 搜索、状态迁移"
+    },
+    {
+      "file": "09-技能系统与插件架构.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "技能加载、执行、生命周期、插件系统"
+    },
+    {
+      "file": "10-调度器与定时任务.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "Cron 调度器、任务存储、执行分发、跨平台投递"
+    },
+    {
+      "file": "11-并发模型与生命周期.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "子代理委派、并行处理、资源清理、异常恢复"
+    },
+    {
+      "file": "12-错误处理与重试机制.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "错误传播、重试策略、超时控制、降级处理"
+    },
+    {
+      "file": "13-测试体系与质量保障.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "测试结构、覆盖率、CI/CD、质量门禁"
+    },
+    {
+      "file": "14-构建部署与运维.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "安装流程、依赖管理、打包部署、运维监控"
+    },
+    {
+      "file": "15-源码索引与覆盖矩阵.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "关键符号索引、模块依赖图、文档覆盖度"
+    }
+  ]
+}
