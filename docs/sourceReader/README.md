@@ -3,7 +3,7 @@
 > 状态：已复核（全部行号/符号与基准提交一致）
 > 复核日期：2026-08-29
 > 生成日期：2026-08-19
-> 基准提交：`8f97ae9aec729bcbbad17da462115e1ec1398421`
+> 基准提交：`aff5125f8edf5095aef5d3d79bbbb101c95b9413`
 > 工作区：dirty（仅 `contributors/emails/agent@Agents-Mac-mini.local` 有未提交改动，与文档无关）
 > 源码范围：`run_agent.py`、`agent/`、`cli.py`、`hermes_cli/`、`tools/`、`gateway/`、`plugins/`、`hermes_state.py`、`tui_gateway/`、`ui-tui/`、`apps/desktop/`、`cron/`、`tests/`、`scripts/`、`docker/` 等仓库全量
 > 生成方式：源码、测试、配置与部署资产静态分析（未运行测试套件）
@@ -18,7 +18,7 @@ Hermes 是一个个人 AI 代理：同一套 Python 编写的 Agent 核心（`ru
 
 ```
 tools/registry.py（零依赖注册表）
-   ↑ tools/*.py（121 个工具文件，import 时自注册）
+   ↑ tools/*.py（137 个工具文件，import 时自注册）
    ↑ model_tools.py（发现 + 分发 handle_function_call）
    ↑ agent/conversation_loop.py（真实对话循环）
    ↑ run_agent.py（AIAgent 门面类）
