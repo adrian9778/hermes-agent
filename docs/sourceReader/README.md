@@ -4,7 +4,7 @@
 > 复核日期：2026-08-29
 > 生成日期：2026-08-19
 > 基准提交：`8f97ae9aec729bcbbad17da462115e1ec1398421`
-> 工作区：dirty（仅 `contributors/emails/agent@Agents-Mac-mini.local` 有未提交改动，与文档无关）
+> 复核方式：2026-08-29 针对基准提交逐一 grep 校验了全部 ~44 个带行号的符号与 ~70 个被引用文件/目录，全部命中；并将 13 篇的测试文件计数 2971 更新为 3054（仓库新增了测试）
 > 源码范围：`run_agent.py`、`agent/`、`cli.py`、`hermes_cli/`、`tools/`、`gateway/`、`plugins/`、`hermes_state.py`、`tui_gateway/`、`ui-tui/`、`apps/desktop/`、`cron/`、`tests/`、`scripts/`、`docker/` 等仓库全量
 > 生成方式：源码、测试、配置与部署资产静态分析（未运行测试套件）
 
