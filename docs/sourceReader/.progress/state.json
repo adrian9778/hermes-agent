@@ -1,7 +1,7 @@
 {
   "status": "complete",
   "current_file": null,
-  "last_completed_file": "15-源码索引与覆盖矩阵.md",
+  "last_completed_file": "17-上下文压缩与缓存保护.md",
   "completed": [
     "00-阅读指南与文档地图.md",
     "01-简单框架-系统骨架.md",
@@ -18,8 +18,18 @@
     "12-错误处理与重试机制.md",
     "13-测试体系与质量保障.md",
     "14-构建部署与运维.md",
-    "15-源码索引与覆盖矩阵.md"
+    "15-源码索引与覆盖矩阵.md",
+    "16-前端形态与宿主协议.md",
+    "17-上下文压缩与缓存保护.md"
   ],
+  "base_commit": "cc0a679f14",
+  "prev_base_commit": "aff5125f",
+  "drift_commits": 16321,
+  "location_notation": "symbol+offset (no absolute line numbers)",
+  "generation_date": "2026-08-19",
+  "last_review": "2026-09-22",
+  "tools": "sr_tools.py (locate/outline/offset/verify)",
+  "spec": "UPDATE-SPEC.md",
   "session_start_time": "2026-08-19T09:20:00Z",
-  "last_update": "2026-08-19T10:45:00Z"
+  "last_update": "2026-09-22T12:00:00Z"
 }

@@ -95,6 +95,20 @@
       "layer": 4,
       "status": "completed",
       "description": "关键符号索引、模块依赖图、文档覆盖度"
+    },
+    {
+      "file": "16-前端形态与宿主协议.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "四种前端形态的进程拓扑、JSON-RPC 契约（单源在 Python 侧）、流式投递、工具集门控、前端构建链（本版新增）",
+      "added": "2026-09-22"
+    },
+    {
+      "file": "17-上下文压缩与缓存保护.md",
+      "layer": 4,
+      "status": "completed",
+      "description": "prompt 缓存不变量、压缩模块地图、触发阈值、压缩如何保护缓存、fail-closed、micro-compaction（本版新增）",
+      "added": "2026-09-22"
     }
   ]
 }
