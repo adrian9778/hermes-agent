@@ -17,7 +17,11 @@ SKIP_DIRS = ("/tests", "/evals", "/__pycache__", "/node_modules", "/.git", "/tes
 SEARCH_ROOTS = ["agent", "hermes_cli", "gateway", "tools", "cron", "tui_gateway",
                 "acp_adapter", "plugins", "hermes_state_common.py"]
 DEF_RE = re.compile(r"^\s*(?:class|def|async def)\s+(\w+)")
-FILE_REF_RE = re.compile(r"[A-Za-z0-9_*][A-Za-z0-9_./*-]*\.(?:py|tsx|ts|yaml|yml|json|md|sh)")
+FILE_REF_RE = re.compile(
+    r"(?<![A-Za-z0-9_])"                                    # not the tail of an identifier
+    r"[A-Za-z0-9_*][A-Za-z0-9_./*-]*\.(?:py|tsx|ts|yaml|yml|json|md|sh)"
+    r"(?![A-Za-z0-9_])"                                     # `code_kernel.shutdown_...` is a method, not `code_kernel.sh`
+)
 LINE_REF_RE = re.compile(r"@(\d+)")
 # 出现这些词的上下文视为「说明性引用」（如"该文件已不存在"），不计为待修笔误
 NEGATION_HINTS = ("不存在", "已删除", "已清空", "已迁移", "已不在", "无法确定", "不是一回事")
@@ -96,19 +100,62 @@ def cmd_offset(path, sym):
     print(f"{path} · {sym} → " + (", ".join(f"{h} (+0)" for h in hits) if hits else "✗ 未找到"))
 
 
+def _ref_exists(ref, doc):
+    """Resolve *ref* against the repo root AND the doc's own directory chain.
+
+    Docs are written against different bases: `docs/sourceReader/*.md` uses
+    repo-root-relative paths (`agent/turn_facade.py`), while nested upstream
+    files like `apps/desktop/AGENTS.md` use file-relative ones
+    (`src/store/composer.ts`). Testing only the CWD false-flags the latter.
+    """
+    bases, d = [".", os.path.dirname(doc)], os.path.dirname(doc)
+    while d and d != ".":
+        bases.append(d)
+        d = os.path.dirname(d)
+    return any(os.path.exists(os.path.join(b, ref)) for b in bases if b)
+
+
+_PRUNED = {"node_modules", ".git", "__pycache__", ".venv", "dist", "build", ".next"}
+
+
+def _build_name_index():
+    """Map basename -> repo-wide occurrence count, for bare-name classification.
+
+    Overview docs (`AGENTS.md`) routinely abbreviate: they say `jobs.py` or
+    `app.tsx` meaning "the file of that name somewhere in this area". A bare
+    name that exists *somewhere* is a style choice, not a broken path — only a
+    bare name that exists *nowhere* is a real typo. Path-shaped refs (with a
+    `/`) are always judged by resolution, never by this index.
+    """
+    idx: dict[str, int] = {}
+    for dp, dn, fn in os.walk("."):
+        dn[:] = [d for d in dn if d not in _PRUNED]
+        for f in fn:
+            idx[f] = idx.get(f, 0) + 1
+    return idx
+
+
 def cmd_verify(docs):
-    real, explanatory, nonrepo, total_lines = {}, {}, {}, 0
+    name_index = _build_name_index()
+    real, explanatory, nonrepo, abbrev, total_lines = {}, {}, {}, {}, 0
     for d in docs:
         lines = open(d, encoding="utf-8", errors="replace").read().split("\n")
         for ln in lines:
             for n in LINE_REF_RE.findall(ln):
                 total_lines += 1
-            for ref in FILE_REF_RE.findall(ln):
-                if ref.startswith(("http", "www")) or "*" in ref or os.path.exists(ref):
+            for m in FILE_REF_RE.finditer(ln):
+                ref = m.group(0)
+                # `test_<skill>_skill.py` — the match is the tail of a
+                # placeholder; the real name is user-supplied, so skip it.
+                if m.start() and ln[m.start() - 1] == ">":
                     continue
-                key = (ref, os.path.basename(d))
+                if ref.startswith(("http", "www")) or "*" in ref or _ref_exists(ref, d):
+                    continue
+                key = (ref, d)
                 if any(h in ln for h in NEGATION_HINTS):
                     explanatory[key] = ln.strip()[:70]
+                elif "/" not in ref and name_index.get(ref):
+                    abbrev[key] = ln.strip()[:70]
                 elif "/" not in ref and ref.rsplit(".", 1)[-1] in ("yaml", "yml", "json"):
                     nonrepo[key] = ln.strip()[:70]
                 else:
@@ -128,6 +175,10 @@ def cmd_verify(docs):
     print()
     print(f"· 非仓库文件名（config.yaml 这类运行期配置名）: {len(nonrepo)}")
     for (ref, doc), _ in sorted(nonrepo.items()):
+        print(f"    {ref:<48} [{doc}]")
+    print()
+    print(f"· 裸名缩写（仓库里存在同名文件，属写法风格，非错误）: {len(abbrev)}")
+    for (ref, doc), _ in sorted(abbrev.items()):
         print(f"    {ref:<48} [{doc}]")
     return len(real)
 

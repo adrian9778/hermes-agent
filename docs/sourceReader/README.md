@@ -38,7 +38,7 @@ tools/registry.py（零依赖注册表）
 2. `hermes_cli/main.py` · `cmd_chat`：安全模式、TUI 判定、会话参数归一化、首跑 bootstrap、provider 守卫；
 3. `cli.py` · `class HermesCLI`（**17 个 Mixin**）：加载皮肤、注册命令、`CLIAgentSetupMixin._init_agent` 装配 Agent；
 4. `run_agent.py` · `class AIAgent` 的 `__init__` 是**转发器** → `agent/agent_init.py` · `init_agent` 完成真实装配；
-5. `agent/turn_facade.py` · `TurnFacadeMixin.run_conversation`：turn 准入（跨进程租约、relay 作用域、计量上下文）；
+5. `agent/turn_facade.py` · `TurnFacadeMixin.run_conversation`：turn 准入（跨进程租约、NeMo Relay 作用域、计量上下文）；
 6. `agent/conversation_loop.py` · `run_conversation`（薄壳）→ `_run_conversation_turn`（实现）；
 7. `agent/turn_context.py` · `build_turn_context` 做每轮 setup → LLM 调用 ↔ 工具执行；
 8. `model_tools.py` · `handle_function_call` → `tools/registry.py` 查表调用工具 handler；

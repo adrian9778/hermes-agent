@@ -22,14 +22,21 @@
     "16-前端形态与宿主协议.md",
     "17-上下文压缩与缓存保护.md"
   ],
-  "base_commit": "cc0a679f14",
-  "prev_base_commit": "aff5125f",
-  "drift_commits": 16321,
+  "base_commit": "7fad4a9772",
+  "prev_base_commit": "cc0a679f14",
+  "drift_commits": 6296,
   "location_notation": "symbol+offset (no absolute line numbers)",
   "generation_date": "2026-08-19",
-  "last_review": "2026-09-22",
+  "last_review": "2026-09-29",
   "tools": "sr_tools.py (locate/outline/offset/verify)",
   "spec": "UPDATE-SPEC.md",
   "session_start_time": "2026-08-19T09:20:00Z",
-  "last_update": "2026-09-22T12:00:00Z"
+  "last_update": "2026-09-29T20:20:00Z",
+  "this_round_summary": [
+    "commit a5bd246865 删除插件兼容层：COMPAT_MANIFEST.md / compat_manifest.json / scripts/check_compat_pointers.py / plugins.allow_deprecated_imports 全部删除；hermes_cli/plugin_compat.py 退化为 22 行 stub",
+    "hermes_state_health.py 新增（bd945ec384）：state.db 结构损坏单一进程级 latch",
+    "规模刷新：agent 311 / tools 340 / hermes_cli 625 / gateway 175 / cron 34 / plugins 241 py, 18 dirs / skills 58 / optional-skills 152",
+    "hermes_state_* 兄弟模块 28 -> 29",
+    "所有 18 篇文档 verify: 疑似失效路径 = 0，@行号 = 0"
+  ]
 }

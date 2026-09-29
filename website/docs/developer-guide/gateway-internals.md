@@ -150,7 +150,9 @@ plugins/platforms/                  # plugin-packaged adapters (one dir each)
 ├── telegram/adapter.py     # Telegram Bot API (long polling or webhook)
 ├── discord/adapter.py      # Discord bot via discord.py
 ├── slack/adapter.py        # Slack Socket Mode
-├── whatsapp/adapter.py     # WhatsApp Business Cloud API
+├── whatsapp/adapter.py     # WhatsApp via a local Baileys (Node.js) bridge
+│                           #   (the Cloud API sibling stays in gateway/platforms/whatsapp_cloud.py;
+│                           #    both share WhatsAppBehaviorMixin in gateway/platforms/whatsapp_common.py)
 ├── matrix/adapter.py       # Matrix via mautrix (optional E2EE)
 ├── mattermost/adapter.py   # Mattermost WebSocket API
 ├── email/adapter.py        # Email via IMAP/SMTP
