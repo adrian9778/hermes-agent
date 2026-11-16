@@ -15,28 +15,111 @@
     "01-简单框架-系统骨架.md",
     "06-工具系统与工具集.md",
     "09-技能系统与插件架构.md",
-    "10-调度器与定时任务.md"
+    "10-调度器与定时任务.md",
+    "02-简单例子-全路径走读.md",
+    "03-详细逐步说明-主链路拆解.md",
+    "04-核心模块与类型关系.md"
   ],
   "tasks": [
-    { "file": "00-阅读指南与文档地图.md", "layer": 0, "status": "pending" },
-    { "file": "01-简单框架-系统骨架.md", "layer": 1, "status": "completed" },
-    { "file": "02-简单例子-全路径走读.md", "layer": 2, "status": "pending" },
-    { "file": "03-详细逐步说明-主链路拆解.md", "layer": 3, "status": "pending" },
-    { "file": "04-核心模块与类型关系.md", "layer": 4, "status": "pending" },
-    { "file": "05-消息网关与平台适配.md", "layer": 4, "status": "pending" },
-    { "file": "06-工具系统与工具集.md", "layer": 4, "status": "completed" },
-    { "file": "07-配置体系与环境变量.md", "layer": 4, "status": "pending" },
-    { "file": "08-数据模型与会话存储.md", "layer": 4, "status": "pending" },
-    { "file": "09-技能系统与插件架构.md", "layer": 4, "status": "completed" },
-    { "file": "10-调度器与定时任务.md", "layer": 4, "status": "completed" },
-    { "file": "11-并发模型与生命周期.md", "layer": 4, "status": "pending" },
-    { "file": "12-错误处理与重试机制.md", "layer": 4, "status": "pending" },
-    { "file": "13-测试体系与质量保障.md", "layer": 4, "status": "pending" },
-    { "file": "14-构建部署与运维.md", "layer": 4, "status": "pending" },
-    { "file": "15-源码索引与覆盖矩阵.md", "layer": 4, "status": "pending" },
-    { "file": "16-前端形态与宿主协议.md", "layer": 4, "status": "pending" },
-    { "file": "17-上下文压缩与缓存保护.md", "layer": 4, "status": "pending" },
-    { "file": "18-依赖管理与平台探测.md", "layer": 4, "status": "pending" },
-    { "file": "README.md", "layer": 0, "status": "pending" }
+    {
+      "file": "00-阅读指南与文档地图.md",
+      "layer": 0,
+      "status": "pending"
+    },
+    {
+      "file": "01-简单框架-系统骨架.md",
+      "layer": 1,
+      "status": "completed"
+    },
+    {
+      "file": "02-简单例子-全路径走读.md",
+      "layer": 2,
+      "status": "completed"
+    },
+    {
+      "file": "03-详细逐步说明-主链路拆解.md",
+      "layer": 3,
+      "status": "completed"
+    },
+    {
+      "file": "04-核心模块与类型关系.md",
+      "layer": 4,
+      "status": "completed"
+    },
+    {
+      "file": "05-消息网关与平台适配.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "06-工具系统与工具集.md",
+      "layer": 4,
+      "status": "completed"
+    },
+    {
+      "file": "07-配置体系与环境变量.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "08-数据模型与会话存储.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "09-技能系统与插件架构.md",
+      "layer": 4,
+      "status": "completed"
+    },
+    {
+      "file": "10-调度器与定时任务.md",
+      "layer": 4,
+      "status": "completed"
+    },
+    {
+      "file": "11-并发模型与生命周期.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "12-错误处理与重试机制.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "13-测试体系与质量保障.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "14-构建部署与运维.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "15-源码索引与覆盖矩阵.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "16-前端形态与宿主协议.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "17-上下文压缩与缓存保护.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "18-依赖管理与平台探测.md",
+      "layer": 4,
+      "status": "pending"
+    },
+    {
+      "file": "README.md",
+      "layer": 0,
+      "status": "pending"
+    }
   ]
 }
