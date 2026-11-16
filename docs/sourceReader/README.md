@@ -1,10 +1,10 @@
 # Hermes Agent 源码深度文档库（新手重构级指南）
 
-> 状态：已按 `e1fdf003a6` 复核
-> 复核日期：2026-10-05
+> 状态：已按 `2658ae13b7` 复核
+> 复核日期：2026-11-16
 > 生成日期：2026-08-19
-> 基准提交：`e1fdf003a6`（2026-10-05）
-> 上一版基准：`cc0a679f14`（2026-09-21）/ `aff5125f`（2026-08-29 复核时）/ `8f97ae9aec`（2026-08-17 生成时）
+> 基准提交：`2658ae13b7`（2026-11-16）
+> 上一版基准：`e1fdf003a6`（2026-10-05）/ `cc0a679f14`（2026-09-21）/ `aff5125f`（2026-08-29 复核时）/ `8f97ae9aec`（2026-08-17 生成时）
 > 源码范围：`run_agent.py`、`agent/`、`cli.py`、`hermes_cli/`、`tools/`、`gateway/`、`plugins/`、`hermes_state*.py`、`tui_gateway/`、`ui-tui/`、`apps/desktop/`、`web/`、`cron/`、`pm/`、`hermes_platform/`、`tests/`、`evals/`、`docker/` 等仓库全量
 > 生成方式：源码、测试、配置与部署资产静态分析（**未运行测试套件**）
 
@@ -12,7 +12,7 @@
 
 ### 架构总览（模块与依赖）
 
-Hermes 是一个个人 AI 代理：同一套 Python 编写的 Agent 核心（`run_agent.py` 的 `AIAgent`）同时驱动四种前端形态——经典 REPL（`cli.py`）、Ink TUI（`ui-tui/` + `tui_gateway/`）、Electron 桌面端（`apps/desktop/` + `apps/shared/`）、Web Dashboard（`web/`），以及消息网关（`gateway/` + `plugins/platforms/` 下 **22 个平台插件**）。
+Hermes 是一个个人 AI 代理：同一套 Python 编写的 Agent 核心（`run_agent.py` 的 `AIAgent`）同时驱动四种前端形态——经典 REPL（`cli.py`）、Ink TUI（`ui-tui/` + `tui_gateway/`）、Electron 桌面端（`apps/desktop/` + `apps/shared/`）、Web Dashboard（`web/`），以及消息网关（`gateway/` + `plugins/platforms/` 下 **26 个平台插件**）。
 
 核心依赖方向（底层→上层）：
 
@@ -26,7 +26,7 @@ tools/registry.py（零依赖注册表）
    ↑ cli.py / tui_gateway/server.py / gateway/run.py / batch_runner.py（各前端入口）
 ```
 
-横切关注点：`hermes_state.py`（SQLite 会话库，14 Mixin + 32 个兄弟模块）、`hermes_cli/config.py`（config.yaml + .env）、
+横切关注点：`hermes_state.py`（SQLite 会话库，18 Mixin + 67 个兄弟模块）、`hermes_cli/config.py`（config.yaml + .env）、
 `hermes_logging.py`（日志）、`hermes_constants.py`（profile 感知路径）、`pm/`（依赖与环境）、`hermes_platform/`（机器事实）。
 能力扩展走**插件**（`plugins/`，18 个插件目录）与**技能**（`skills/` 58 个 + `optional-skills/` 152 个），核心保持"窄腰"。
 
@@ -61,7 +61,16 @@ tools/registry.py（零依赖注册表）
 
 ## 本版（2026-10-05）更新说明
 
-上一版基于 `cc0a679f14`（2026-09-21）。到本版基准 `e1fdf003a6`（2026-10-05）之间隔了
+本版基于 `e1fdf003a6`（2026-10-05）。到当前基准 `2658ae13b7`（2026-11-16）之间隔了 **24501 个 commit / 16622 个改动文件**：
+
+| 变化 | 说明 |
+|---|---|
+| **平台插件** | `plugins/platforms/` 22 → **26** 个平台目录；核心 `gateway/platforms/` 不再保留任何平台适配器文件（仅基础设施 + API Server 族） |
+| **会话库拆分** | `hermes_state_*.py` 兄弟模块 32 → **67**；`SessionDB` 组合的 Mixin 14 → **18** |
+| **规模** | `agent/` 317→461；`hermes_cli/` 644→881；`gateway/` 177→405；`tools/` 339→413（全表见 [14 篇](./14-构建部署与运维.md) 规模快照） |
+| **桌面端** | 后端 spawn 改走 `hermes gateway ensure` + `spawn-ledger.json`；`backend-command.ts` 与 `backend-serve-support.ts` 已删除 |
+
+上一版基于 `cc0a679f14`（2026-09-21）。到 `e1fdf003a6`（2026-10-05）之间隔了
 **9098 个 commit / 10106 个改动文件**。本次是**增量刷新**（不是重写骨架）：逐篇核对受影响段落，
 把漂移处改到与当前代码一致。
 

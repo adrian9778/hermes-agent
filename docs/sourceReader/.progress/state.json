@@ -29,13 +29,15 @@
     "15-源码索引与覆盖矩阵.md",
     "16-前端形态与宿主协议.md",
     "17-上下文压缩与缓存保护.md",
-    "18-依赖管理与平台探测.md"
+    "18-依赖管理与平台探测.md",
+    "00-阅读指南与文档地图.md",
+    "README.md"
   ],
   "tasks": [
     {
       "file": "00-阅读指南与文档地图.md",
       "layer": 0,
-      "status": "pending"
+      "status": "completed"
     },
     {
       "file": "01-简单框架-系统骨架.md",
@@ -130,7 +132,7 @@
     {
       "file": "README.md",
       "layer": 0,
-      "status": "pending"
+      "status": "completed"
     }
   ]
 }
