@@ -1,6 +1,6 @@
 {
   "task": "full_rewrite",
-  "status": "in_progress",
+  "status": "completed",
   "base_commit": "2ddb50e41aadd5b4a753bec35aa1fc8c8433bfe8",
   "prev_base_commit": "e1fdf003a6",
   "drift_commits": 24500,
@@ -134,5 +134,6 @@
       "layer": 0,
       "status": "completed"
     }
-  ]
+  ],
+  "final_commit": "4f231bb420"
 }
